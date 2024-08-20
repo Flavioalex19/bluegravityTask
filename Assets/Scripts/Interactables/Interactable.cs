@@ -21,6 +21,7 @@ public class Interactable : MonoBehaviour
         {
             int_player = other.GetComponent<PlayerController>();
             int_canInteract = true;
+            int_player.SetCanInteract(int_canInteract);
             
         }
     }
@@ -28,7 +29,7 @@ public class Interactable : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         int_canInteract = false;
+        int_player.SetCanInteract(int_canInteract);
         int_player = null;
-        print(int_canInteract);
     }
 }

@@ -6,8 +6,13 @@ public class PlayerController : MonoBehaviour
 {
 
     //Variables
-    #region Movement
+    #region Movement Variables
     Vector3 _move;
+    #endregion
+
+    #region Interaction Variables
+    public bool int_canInteract = false;
+    public bool int_isInteracting = false;
     #endregion
 
     //Components
@@ -18,11 +23,18 @@ public class PlayerController : MonoBehaviour
     {
         c_movement = GetComponent<Movement>();
     }
-
+    private void Update()
+    {
+        //Interactions
+        #region Interactions
+        //Item Interactions
+        if (int_canInteract && Input.GetKeyDown(KeyCode.E)) { int_isInteracting = true; print("OK"); }
+        #endregion
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Inputs
+        //Movement Inputs
         //Get input values
         _move = Vector3.zero;
         _move.x = Input.GetAxis("Horizontal");
@@ -30,4 +42,11 @@ public class PlayerController : MonoBehaviour
         //Execute movement
         c_movement.Move(_move);
     }
+
+    //Get & Set
+    public bool GetCanInteract() { return int_canInteract; }
+    public void SetCanInteract(bool value) { int_canInteract=value; }
+    public bool GetIsInteracting() {  return int_isInteracting; }
+    public void SetIsInteracting(bool value) {  int_isInteracting=value; }
+
 }

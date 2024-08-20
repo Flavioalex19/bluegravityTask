@@ -5,19 +5,21 @@ using UnityEngine;
 public class PickUpItem : Interactable
 {
 
-    //Variable
-
-    [SerializeField] Item so_Item;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Item so_Item;//Scriptable Object of the item
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Check if has a player to interact
+        if (int_player != null)
+        {
+            //Check if t he player is interacting with the object
+            if (int_player.GetIsInteracting() == true)
+            {
+                int_player.SetCanInteract(false);//Player no longer can interact with this object
+                int_player.SetIsInteracting(false);//End the interaction with the player
+                Destroy(gameObject);//remove the object
+            }
+        }
     }
 }

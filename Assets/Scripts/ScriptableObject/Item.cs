@@ -10,10 +10,10 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     //Variables
-    [SerializeField] string i_name;
-    [SerializeField] string i_description;
+    public string i_name;
+    public string i_description;
 
-    [SerializeField] Sprite i_inventoryPortrait;//Icon that will be displayed at the inventory
+    public Sprite i_inventoryPortrait;//Icon that will be displayed at the inventory
 
 
 }
