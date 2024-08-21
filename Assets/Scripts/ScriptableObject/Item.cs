@@ -4,6 +4,7 @@
 /// </summary>
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
@@ -14,6 +15,8 @@ public class Item : ScriptableObject
     public string i_description;
 
     public Sprite i_inventoryPortrait;//Icon that will be displayed at the inventory
+    public GameObject i_inventoryItem;
 
+    
 
 }
