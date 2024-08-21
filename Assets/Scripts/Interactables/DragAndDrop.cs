@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour
+public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public Image IconImage;
+    public Transform dd_parentAfterDrag;
+
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        dd_parentAfterDrag = transform.parent;
+        transform.SetParent(transform.root);
+        transform.SetAsFirstSibling();
+        IconImage.raycastTarget = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDrag(PointerEventData eventData)
     {
-        
+        transform.position = Input.mousePosition;
     }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        transform.SetParent(dd_parentAfterDrag);
+        IconImage.raycastTarget = true;
+    }
+
+    
 }

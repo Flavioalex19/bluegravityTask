@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4198233299159548894}
   - component: {fileID: 2167089337223856653}
   - component: {fileID: 4097995449425513554}
+  - component: {fileID: 4406952601902376271}
   m_Layer: 5
   m_Name: Empty Slot
   m_TagString: Untagged
@@ -66,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21303576, guid: 31e24ed712cbf3b4595a8dbc9b18aa9c, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -88,4 +89,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0570c4d7c4d300144b4c8732d480fc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSlotEmpty: 1
+--- !u!114 &4406952601902376271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789498492805473499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 75, y: 75}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2

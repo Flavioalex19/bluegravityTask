@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
+    [SerializeField] List<ItemSlot> InventorySlotsList = new List<ItemSlot>();//List of avaliable slots
     [SerializeField] List<Item> ItemList = new List<Item>();//List of Items that the player has
     public GridLayoutGroup ItemsGrid;//add later on the start
 
@@ -23,47 +24,41 @@ public class InventoryManager : MonoBehaviour
         //print(ItemsGrid.transform.childCount);
         ItemsGrid.gameObject.SetActive(false);//testing purposes
     }
-    /*
-    public void AddToList(Item item)
-    {
-        ItemList.Add(item);
-        for (int i = 0; i < ItemsGrid.transform.childCount; i++)
-        {
-            if (ItemsGrid.transform.GetChild(i).GetComponent<ItemSlot>().IsSlotEmpty)
-            {
-                Instantiate(item.i_inventoryItem, ItemsGrid.transform.GetChild(i));
-                ItemsGrid.transform.GetChild(i).GetComponent<ItemSlot>().IsSlotEmpty = false;
-                break;
-            }
-        }
-        //Instantiate(item.i_inventoryItem, ItemsGrid.transform);
-    }
-    */
+   
     private void Update()
     {
         //testing
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
+            
             ItemsGrid.gameObject.SetActive(true);
-            ListItems();
+            //ListItems();
+            
+            
         }
+        
     }
     public void AddToInventory(Item item)
     {
-        ItemList.Add(item);
+        //ItemList.Add(item);
+        for (int i = 0; i < InventorySlotsList.Count; i++)
+        {
+            //Check if there if the slot is empty
+            if (InventorySlotsList[i].transform.childCount == 0)
+            {
+                ItemList.Add(item);
+                GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
+                Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
+                itemIcon.sprite = item.i_inventoryPortrait;
+                break;
+            }
+        }
+       
     }
     public void RemoveFromInventory(Item item)
     {
         ItemList.Remove(item);
     }
-    public void ListItems()
-    {
-        foreach (Item item in ItemList)
-        {
-            GameObject obj = Instantiate(InventoryItemSlot, ItemsGrid.transform);
-            Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
-
-            itemIcon.sprite = item.i_inventoryPortrait;
-        }
-    }
+   
 }
