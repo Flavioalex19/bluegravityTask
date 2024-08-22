@@ -11,8 +11,10 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     //Variables
+    public int i_ID;
     public string i_name;
     public string i_description;
+    public bool i_isEquiped;
 
     public Sprite i_inventoryPortrait;//Icon that will be displayed at the inventory
     public GameObject i_inventoryItem;

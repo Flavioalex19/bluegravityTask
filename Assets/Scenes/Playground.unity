@@ -2337,6 +2337,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ac74f0d3b91d346849abe6acb8f8b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSlotsList:
+  - {fileID: 2053565640}
+  - {fileID: 1395663620}
+  - {fileID: 776355068}
+  - {fileID: 1251727114}
+  - {fileID: 1923836555}
   interactionTextArea: {fileID: 0}
 --- !u!1001 &1915308010
 PrefabInstance:

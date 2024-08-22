@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,30 +24,49 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         //print(ItemsGrid.transform.childCount);
-        ItemsGrid.gameObject.SetActive(false);//testing purposes
+        //ItemsGrid.gameObject.SetActive(false);//testing purposes
 
         //TESTING!!!!!!!!!!!!!!!!!!!!!!
         
         if (SaveSystem.LoadInventory() != null)
         {
             //SaveSystem.LoadInventory();
-            print("Has a save");
             InventoryData data = SaveSystem.LoadInventory();
+            
             foreach (InventoryData.ItemData itemData in data.itemsData)
             {
                 Item item = CreateItemFromData(itemData);
 
                 if (item != null)
                 {
+                    
                     ItemList.Add(item);
+                    item.i_ID = itemData.id;
+                    item.i_isEquiped = itemData.isItemEquip;
+                    //update the slots with the itens on the inventory
+                    for (int i = 0; i < InventorySlotsList.Count; i++)
+                    {
+                        if (InventorySlotsList[i].transform.childCount == 0 && InventorySlotsList[i].HasItem)
+                        {
+                            GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
+                            Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
+                            itemIcon.sprite = item.i_inventoryPortrait;
+                            break;
+                        }
+                    }
+
+
                 }
             }
+            
+            
+            
         }
     }
    
     private void Update()
     {
-        //testing
+        //testing -MUST BE ON GAME MANAGER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (Input.GetKeyDown(KeyCode.Space))
         {
             
@@ -59,6 +79,7 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveSystem.SaveInventory(ItemList);
+            
         }
         
         if (Input.GetKeyDown(KeyCode.C))
@@ -77,6 +98,7 @@ public class InventoryManager : MonoBehaviour
             {
                 ItemList.Add(item);
                 GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
+                InventorySlotsList[i].GetComponent<ItemSlot>().HasItem = true;
                 Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
                 itemIcon.sprite = item.i_inventoryPortrait;
                 break;
@@ -90,9 +112,7 @@ public class InventoryManager : MonoBehaviour
     }
     private Item CreateItemFromData(InventoryData.ItemData itemData)
     {
-        // Create or load the Item instance from the data
-        // This is an example; you need to implement actual asset loading based on your setup
-        Item item = ScriptableObject.CreateInstance<Item>(); // Replace with actual item creation logic
+        Item item = ScriptableObject.CreateInstance<Item>(); 
         item.i_name = itemData.name;
         item.i_description = itemData.description;
 
@@ -102,5 +122,5 @@ public class InventoryManager : MonoBehaviour
 
         return item;
     }
-
+    
 }

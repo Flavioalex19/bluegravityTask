@@ -12,6 +12,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         dd_parentAfterDrag = transform.parent;
+        dd_parentAfterDrag.GetComponent<ItemSlot>().HasItem = false;
         transform.SetParent(transform.root);
         transform.SetAsFirstSibling();
         IconImage.raycastTarget = false;
