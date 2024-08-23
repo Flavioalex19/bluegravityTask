@@ -24,7 +24,7 @@ public class BattleAi : MonoBehaviour
 
     private void Update()
     {
-        if(gm_Manager.Bp_CurrentPhase == BPBattlePhase.AITurn )
+        if (gm_Manager.Bp_CurrentPhase == BPBattlePhase.AITurn)
         {
             ChooseAction();
         }
@@ -69,7 +69,7 @@ public class BattleAi : MonoBehaviour
             bp_CurrentActionPerTurn = bp_MaxActionPerTurn;
             gm_Manager.PassTurn();
         }
-        
+
     }
     IEnumerator PerformActionWithDelay(System.Action action)
     {
@@ -91,5 +91,22 @@ public class BattleAi : MonoBehaviour
     void Buffing()
     {
         Debug.Log("AI buffs!");
+    }
+    public void TakeDamage(float amount)
+    {
+        Damage(amount);
+    }
+
+    private void Damage(float amount)
+    {
+        bp_HP -= amount;
+        Debug.Log("AI takes " + amount + " damage. Current HP: " + bp_HP);
+
+        if (bp_HP <= 0)
+        {
+            bp_HP = 0;
+            Debug.Log("AI defeated!");
+            // Handle AI defeat logic here
+        }
     }
 }

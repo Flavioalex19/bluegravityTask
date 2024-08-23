@@ -10,6 +10,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public bool HasItem = false;
     public Sprite ItemSprite;
 
+    public bool IsInBattle = false;
+
     //Testing awake
     private void Awake()
     {

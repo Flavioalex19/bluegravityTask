@@ -16,10 +16,11 @@ public class UiManager : MonoBehaviour
     //Animator animator_DialogueBox;
 
 
-    bool isInventoryOn = false;
+    public bool isInventoryOn = false;
     Animator animator_inventory;
 
     PlayerController p_playerController;
+    GameManager gm_gameManager;
     private void Awake()
     {
         if (SaveSystem.LoadItemSlot() != null)
@@ -56,11 +57,12 @@ public class UiManager : MonoBehaviour
     {
         p_playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         animator_inventory = GameObject.Find("Inventory Grid Area").GetComponent<Animator>();
+        gm_gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         //test area
         interactionTextArea = GameObject.Find("Interaction Text Area");
 
-
+        if(gm_gameManager.gm_IsABattle)isInventoryOn = true;
 
 
     }
@@ -85,7 +87,13 @@ public class UiManager : MonoBehaviour
         {
             isInventoryOn = !isInventoryOn;
         }
+        animator_inventory.SetBool("isOn", isInventoryOn);
+       
 
+    }
+    public void SetIsInventoryOn()
+    {
+        isInventoryOn = !isInventoryOn;
     }
     //Turn On or Off UI element
     void TurnOffAndOnUI(GameObject uiObj, bool value)

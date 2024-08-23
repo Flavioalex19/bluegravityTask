@@ -39,7 +39,7 @@ public class InventoryData
                 description = item.i_description,
                 itemDamage = item.i_damage,
                 inventoryPortraitPath = AssetDatabase.GetAssetPath(item.i_inventoryPortrait),
-                inventoryItemPath = AssetDatabase.GetAssetPath(item.i_inventoryItem),
+                //inventoryItemPath = AssetDatabase.GetAssetPath(item.i_inventoryItem),
                 isItemEquip = item.i_isEquiped
             };
 

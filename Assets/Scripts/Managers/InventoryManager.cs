@@ -75,7 +75,7 @@ public class InventoryManager : MonoBehaviour
         {
             
             
-            ItemsGrid.gameObject.SetActive(true);
+            //ItemsGrid.gameObject.SetActive(true);
             //ListItems();
             
             
@@ -125,7 +125,7 @@ public class InventoryManager : MonoBehaviour
 
         // Load Sprite and GameObject from paths if needed
         item.i_inventoryPortrait = AssetDatabase.LoadAssetAtPath<Sprite>(itemData.inventoryPortraitPath);
-        item.i_inventoryItem = AssetDatabase.LoadAssetAtPath<GameObject>(itemData.inventoryItemPath);
+        //item.i_inventoryItem = AssetDatabase.LoadAssetAtPath<GameObject>(itemData.inventoryItemPath);
 
         return item;
     }

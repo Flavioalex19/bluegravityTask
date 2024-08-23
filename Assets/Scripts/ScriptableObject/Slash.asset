@@ -16,6 +16,5 @@ MonoBehaviour:
   i_name: Slash
   i_description: '"SNIKT"'
   i_isEquiped: 0
-  i_damage: 20
-  i_inventoryPortrait: {fileID: 0}
-  i_inventoryItem: {fileID: 0}
+  i_damage: -20
+  i_inventoryPortrait: {fileID: 21300000, guid: 0389074d1deba1c448d45812db40c0df, type: 3}

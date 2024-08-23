@@ -1,6 +1,8 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroScreenManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class IntroScreenManager : MonoBehaviour
     public bool canStartGame = false;//if the player is allow to start/continue the game
     bool hasASaveGame = false;//if ha any save data
     GameObject pressStartOrContinue;//Depending on whether there is saved data, the message at the beginning will change
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +33,9 @@ public class IntroScreenManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartTheGame()
     {
         canStartGame = true;
     }
+    
 }

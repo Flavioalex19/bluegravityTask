@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : Interactable
 {
@@ -11,7 +12,8 @@ public class NPC : Interactable
     [SerializeField] List<string> npc_Lines = new List<string>();//LInes that the npc will talk
     [SerializeField] List<string> npc_Lines2 = new List<string>();//If The Npc has a second Lines od Dialogue
     [SerializeField] bool hasMoreDialogue = false;
-
+    [SerializeField] bool canProgressStory = false
+;
     //Components
     UiManager m_uiManager;
     public DialogueManager m_dialogueManager;
@@ -19,7 +21,7 @@ public class NPC : Interactable
     public GameObject dialogueCanvas;
     public TextMeshProUGUI _lineText;
 
-    bool isPlayerInRange = false;//test
+    public bool isPlayerInRange = false;//test
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class NPC : Interactable
 
     private void Update()
     {
-        if (hasMoreDialogue) npc_Lines = npc_Lines2;
+        
         // Check for player input (e.g., press 'E' to start dialogue)
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
@@ -47,6 +49,8 @@ public class NPC : Interactable
                 npc_DialogueIndex = 0;
                 dialogueCanvas.SetActive(false);
                 m_playerController.int_isInDialogue = false;
+                if (canProgressStory) /*SceneManager.LoadScene(2);*/TrasitionNewLevel.Transition();
+                if(hasMoreDialogue) npc_Lines = npc_Lines2;
             }
             
         }
