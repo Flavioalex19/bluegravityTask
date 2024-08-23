@@ -16,5 +16,6 @@ MonoBehaviour:
   i_name: Drink
   i_description: I NEED IT!!!!!!!!!
   i_isEquiped: 0
+  i_damage: -120
   i_inventoryPortrait: {fileID: 21300000, guid: 3837193819449e240a00b8d51e90df9d, type: 3}
   i_inventoryItem: {fileID: 8789498492805473499, guid: 402f08dbc5622b147bf2f4b9c9c6ac1d, type: 3}

@@ -16,5 +16,6 @@ MonoBehaviour:
   i_name: Healing Potion
   i_description: Potion that, wait for it, HEAL!!!!!!!
   i_isEquiped: 0
+  i_damage: -10
   i_inventoryPortrait: {fileID: 21300000, guid: 996c550641f276347bd45ca78052d047, type: 3}
   i_inventoryItem: {fileID: 8789498492805473499, guid: b4f77729817b0444792aa231f0ba274e, type: 3}

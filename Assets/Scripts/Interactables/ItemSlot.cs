@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    public int SlotID;
+    public int SlotID = 0;
     public bool HasItem = false;
     public Sprite ItemSprite;
 
@@ -23,12 +23,19 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         if (transform.childCount == 0) HasItem = false;
         else HasItem = true;
         */
-        if (HasItem)
+        if (HasItem && transform.childCount > 0)
         {
             //SlotID = transform.GetChild(0).
             ItemSprite = transform.GetChild(0).GetComponent<DragAndDrop>().IconImage.sprite;
+            //SlotID = transform.GetChild(0).GetComponent<DragAndDrop>().MyID;
+            print(SlotID);
         }
-        else ItemSprite = null;
+        else 
+        {
+            ItemSprite = null;
+            SlotID = 0;
+            
+        } 
 
        
 
@@ -41,6 +48,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             DragAndDrop dd_item = eventData.pointerDrag.GetComponent<DragAndDrop>();
             dd_item.dd_parentAfterDrag = transform;
             HasItem = true;
+            
             
         }
         /*

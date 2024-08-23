@@ -15,6 +15,7 @@ public class Item : ScriptableObject
     public string i_name;
     public string i_description;
     public bool i_isEquiped;
+    public float i_damage;//If has positive value heals, if negative deals damage
 
     public Sprite i_inventoryPortrait;//Icon that will be displayed at the inventory
     public GameObject i_inventoryItem;

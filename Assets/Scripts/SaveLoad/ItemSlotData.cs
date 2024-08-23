@@ -16,6 +16,8 @@ public class ItemSlotData
     public class SlotData
     {
         public bool HasEquipped;
+        public string PortraitPath;
+        public int SlotIndex;
     }
 
     // Constructor that takes a list of ItemSlot objects and converts them to SlotData
@@ -27,8 +29,13 @@ public class ItemSlotData
         {
             SlotData data = new SlotData()
             {
-                HasEquipped = slot.HasItem // Assuming HasItem is the correct property for this
+                HasEquipped = slot.HasItem, // Assuming HasItem is the correct property for this
+                PortraitPath = AssetDatabase.GetAssetPath(slot.ItemSprite),
+                SlotIndex = slot.SlotID
+                
             };
+
+            Debug.Log("Saving SlotID: " + slot.SlotID);
 
             // Add the SlotData to the ItemSlotsList
             ItemSlotsList.Add(data);

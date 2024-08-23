@@ -43,10 +43,13 @@ public class InventoryManager : MonoBehaviour
                     ItemList.Add(item);
                     item.i_ID = itemData.id;
                     item.i_isEquiped = itemData.isItemEquip;
+                    item.i_damage = itemData.itemDamage;
+                    item.i_description = itemData.description;
+                    //print(item.i_damage + " " + item.i_description);
                     //update the slots with the itens on the inventory
                     for (int i = 0; i < InventorySlotsList.Count; i++)
                     {
-                        if (InventorySlotsList[i].transform.childCount == 0 && InventorySlotsList[i].HasItem)
+                        if (InventorySlotsList[i].transform.childCount == 0 && InventorySlotsList[i].HasItem && InventorySlotsList[i].SlotID == item.i_ID)
                         {
                             GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
                             Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
@@ -98,7 +101,9 @@ public class InventoryManager : MonoBehaviour
             {
                 ItemList.Add(item);
                 GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
-                InventorySlotsList[i].GetComponent<ItemSlot>().HasItem = true;
+                InventorySlotsList[i].GetComponent<ItemSlot>().HasItem = true;//fill the slot
+                InventorySlotsList[i].GetComponent<ItemSlot>().SlotID = item.i_ID;
+                obj.GetComponent<DragAndDrop>().MyID = item.i_ID;
                 Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
                 itemIcon.sprite = item.i_inventoryPortrait;
                 break;

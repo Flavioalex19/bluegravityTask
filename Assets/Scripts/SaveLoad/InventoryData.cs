@@ -20,6 +20,7 @@ public class InventoryData
         public string inventoryPortraitPath; // Store path to the sprite
         public string inventoryItemPath; // Store path to the Items
         public bool isItemEquip;
+        public float itemDamage;
         
     }
    
@@ -36,6 +37,7 @@ public class InventoryData
                 id = item.i_ID,
                 name = item.i_name,
                 description = item.i_description,
+                itemDamage = item.i_damage,
                 inventoryPortraitPath = AssetDatabase.GetAssetPath(item.i_inventoryPortrait),
                 inventoryItemPath = AssetDatabase.GetAssetPath(item.i_inventoryItem),
                 isItemEquip = item.i_isEquiped
