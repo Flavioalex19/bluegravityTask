@@ -4,11 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int MyID = 0;
     public Image IconImage;
     public Transform dd_parentAfterDrag;
+    public Item ActiveItem;
+
+    private void Update()
+    {
+        
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -34,5 +40,13 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     }
 
-    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        TooltipManager.tt_instance.ShowTooltip(ActiveItem.i_description);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipManager.tt_instance.HiddeTooltip();
+    }
 }

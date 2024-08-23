@@ -9,6 +9,8 @@ public class NPC : Interactable
     //variables
     [SerializeField] int npc_DialogueIndex;//Index for the lines
     [SerializeField] List<string> npc_Lines = new List<string>();//LInes that the npc will talk
+    [SerializeField] List<string> npc_Lines2 = new List<string>();//If The Npc has a second Lines od Dialogue
+    [SerializeField] bool hasMoreDialogue = false;
 
     //Components
     UiManager m_uiManager;
@@ -30,6 +32,7 @@ public class NPC : Interactable
 
     private void Update()
     {
+        if (hasMoreDialogue) npc_Lines = npc_Lines2;
         // Check for player input (e.g., press 'E' to start dialogue)
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {

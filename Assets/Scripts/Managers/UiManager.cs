@@ -56,13 +56,13 @@ public class UiManager : MonoBehaviour
     {
         p_playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         animator_inventory = GameObject.Find("Inventory Grid Area").GetComponent<Animator>();
-        
+
         //test area
         interactionTextArea = GameObject.Find("Interaction Text Area");
 
-        
 
-        
+
+
     }
     // Update is called once per frame
     void Update()
@@ -85,7 +85,7 @@ public class UiManager : MonoBehaviour
         {
             isInventoryOn = !isInventoryOn;
         }
-        
+
     }
     //Turn On or Off UI element
     void TurnOffAndOnUI(GameObject uiObj, bool value)
@@ -93,5 +93,5 @@ public class UiManager : MonoBehaviour
         uiObj.SetActive(value);
     }
     //Fill item slot list{
-    
+
 }

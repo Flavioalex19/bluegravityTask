@@ -54,6 +54,7 @@ public class InventoryManager : MonoBehaviour
                             GameObject obj = Instantiate(InventoryItemSlot, InventorySlotsList[i].transform);
                             Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
                             itemIcon.sprite = item.i_inventoryPortrait;
+                            obj.GetComponent<DragAndDrop>().ActiveItem = item;
                             break;
                         }
                     }
@@ -104,6 +105,7 @@ public class InventoryManager : MonoBehaviour
                 InventorySlotsList[i].GetComponent<ItemSlot>().HasItem = true;//fill the slot
                 InventorySlotsList[i].GetComponent<ItemSlot>().SlotID = item.i_ID;
                 obj.GetComponent<DragAndDrop>().MyID = item.i_ID;
+                obj.GetComponent<DragAndDrop>().ActiveItem = item;
                 Image itemIcon = obj.transform.Find("Item Image").GetComponent<Image>();
                 itemIcon.sprite = item.i_inventoryPortrait;
                 break;

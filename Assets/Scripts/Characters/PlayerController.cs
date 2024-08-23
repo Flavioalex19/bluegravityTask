@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
 
     //Components
     Movement c_movement;
+    GameManager gm_Manager;
 
     // Start is called before the first frame update
     void Start()
     {
         c_movement = GetComponent<Movement>();
+        gm_Manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
     private void Update()
     {

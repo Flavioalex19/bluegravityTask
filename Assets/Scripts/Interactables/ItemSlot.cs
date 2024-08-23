@@ -56,6 +56,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         dd_item.dd_parentAfterDrag = transform;
         */
     }
-
     
+
 }

@@ -2,58 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BPBattlePhase { PlayerTurn, AITurn, Beginning, Rules }
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] bool gm_IsABattle = false;//If we are on the Battle Scene
-    public enum BPBattlePhase { PlayerTurn, AITurn }
+    public bool gm_IsABattle = false;//If we are on the Battle Scene
+    
 
-    [SerializeField] BPBattlePhase bp_CurrentPhase;
+    public BPBattlePhase Bp_CurrentPhase;
+
+
     [SerializeField] int bp_TurnCount = 0;
     [SerializeField] bool bp_IsPlayerTurn = true;
 
     private void Start()
     {
-        // Start with the player's turn
-        bp_CurrentPhase = BPBattlePhase.PlayerTurn;
-        bp_IsPlayerTurn = true;
+        if (bp_IsPlayerTurn)
+        {
+            // Start with the player's turn
+            Bp_CurrentPhase = BPBattlePhase.PlayerTurn;//Change to rules
+            bp_IsPlayerTurn = true;
+        }
+        
     }
     private void Update()
     {
         
     }
-    public void BattleState()
-    {
-        if (bp_CurrentPhase == BPBattlePhase.PlayerTurn)
-        {
-            // Player's turn logic
-            Debug.Log("Player's Turn");
-            // Example: Wait for player's input and end turn
-        }
-        else if (bp_CurrentPhase == BPBattlePhase.AITurn)
-        {
-            // AI's turn logic
-            Debug.Log("AI's Turn");
-            // Example: AI logic and end turn
-        }
-    }
-
+    
     // Call this function to pass the turn
     public void PassTurn()
     {
         bp_TurnCount++;
 
-        if (bp_CurrentPhase == BPBattlePhase.PlayerTurn)
+        if (Bp_CurrentPhase == BPBattlePhase.PlayerTurn)
         {
-            bp_CurrentPhase = BPBattlePhase.AITurn;
+            Bp_CurrentPhase = BPBattlePhase.AITurn;
             bp_IsPlayerTurn = false;
         }
-        else if (bp_CurrentPhase == BPBattlePhase.AITurn)
+        else if (Bp_CurrentPhase == BPBattlePhase.AITurn)
         {
-            bp_CurrentPhase = BPBattlePhase.PlayerTurn;
+            Bp_CurrentPhase = BPBattlePhase.PlayerTurn;
             bp_IsPlayerTurn = true;
         }
 
-        BattleState();
     }
 }
 
